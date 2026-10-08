@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cartao-aplicacao">
+        <header class="cabecalho-aplicacao">
+            <h1>Minhas Tarefas</h1>
+            <button id="botao-tema" class="botao-tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="caixa-entrada">
+            <input type="text" id="campo-tarefa" placeholder="O que vamos fazer hoje?..." maxlength="40">
+            <button id="botao-adicionar" class="botao-principal">
+                <i class="fa-solid fa-plus"></i>Adicionar
+            </button>
+        </div>
+
+        <ul id="lista-tarefas" class="lista-tarefas"></ul>
+
+        <footer class="rodape-aplicacao">
+            <img src="vkz.jpg" alt="Foto de Nicolas de Paula Ramos" class="foto-perfil">
+            <p>Este site foi feito por <strong>Nicolas de Paula Ramos</strong></p>
+            <span id="contador-tarefas">0 tarefas na lista</span>
+        </footer>
+    </div>
+
+    <button id="botao-ajuda" class="botao-flutuante-ajuda">!</button>
+
+    <div id="modal-ajuda" class="modal-container">
+        <div class="modal-conteudo">
+            <button id="fechar-modal" class="botao-fechar">&times;</button>
+
+            <div class="aba-botoes">
+                <button class="botao-aba ativa" onclick="abrirAba(event, 'aba-como-funciona')">Como Usar</button>
+                <button class="botao-aba" onclick="abrirAba(event, 'aba-cadastro')">Cadastro</button>
+                <button class="botao-aba" onclick="abrirAba(event, 'aba-perfil')">Perfil</button>
+            </div>
+
+            <div id="aba-como-funciona" class="conteudo-aba ativa">
+                <h2>Como o site funciona</h2>
+                <p>1. Digite a sua tarefa no campo de texto e clique em <strong>Adicionar</strong> ou aperte <strong>Enter</strong>.</p>
+                <p>2. Clique no ícone de checagem para marcar uma tarefa como concluída.</p>
+                <p>3. Clique no ícone de lixeira para excluir uma tarefa da lista.</p>
+                <p>4. Alterne entre o modo claro e escuro usando o botão de lua/sol no topo.</p>
+            </div>
+
+            <div id="aba-cadastro" class="conteudo-aba">
+                <h2>Salvar Informações</h2>
+                <form id="formulario-cadastro">
+                    <div class="campo-grupo">
+                        <label for="nome-usuario">Seu Nome:</label>
+                        <input type="text" id="nome-usuario" placeholder="Digite seu nome">
+                    </div>
+                    <div class="campo-grupo">
+                        <label for="email-usuario">Seu E-mail:</label>
+                        <input type="email" id="email-usuario" placeholder="Digite seu e-mail">
+                    </div>
+                    <button type="submit" class="botao-principal">Salvar Dados</button>
+                </form>
+                <p id="mensagem-sucesso" class="mensagem-oculta">Dados salvos com sucesso!</p>
+            </div>
+
+            <div id="aba-perfil" class="conteudo-aba">
+                <h2>Meu Perfil</h2>
+                <div style="margin-bottom: 15px; font-size: 14px;">
+                    <p style="margin-bottom: 8px;"><strong>Nome:</strong> <span id="perfil-nome">Nenhum nome salvo</span></p>
+                    <p><strong>E-mail:</strong> <span id="perfil-email">Nenhum e-mail salvo</span></p>
+                </div>
+                <button id="botao-limpar-dados" class="botao-principal" style="background-color: #ef4444; width: 100%;">Limpar Meus Dados</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

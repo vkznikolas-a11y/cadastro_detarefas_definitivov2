@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    transition: background 0.3s ease;
+}
+
+body.modo-escuro {
+    background: linear-gradient(135deg, #1c0a0a 0%, #2e0808 100%);
+    color: #f8fafc;
+}
+
+.cartao-aplicacao {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease;
+}
+
+body.modo-escuro .cartao-aplicacao {
+    background: #2a1212;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.cabecalho-aplicacao h1 {
+    font-size: 28px;
+    color: #0369a1;
+    margin-bottom: 10px;
+}
+
+body.modo-escuro .cabecalho-aplicacao h1 {
+    color: #fca5a5;
+}
+
+.botao-tema {
+    background-color: #0284c7;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.botao-tema:hover {
+    transform: scale(1.05);
+}
+
+body.modo-escuro .botao-tema {
+    background-color: #dc2626;
+}
+
+.caixa-entrada {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#campo-tarefa {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+body.modo-escuro #campo-tarefa {
+    background: #3f1515;
+    border-color: #7f1d1d;
+    color: #fff;
+}
+
+.botao-principal {
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.botao-principal:hover {
+    background-color: #0369a1;
+}
+
+body.modo-escuro .botao-principal {
+    background-color: #dc2626;
+}
+
+body.modo-escuro .botao-principal:hover {
+    background-color: #b91c1c;
+}
+
+.lista-tarefas {
+    list-style: none;
+    margin-bottom: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.item-tarefa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f9ff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+body.modo-escuro .item-tarefa {
+    background: #3f1515;
+}
+
+.item-tarefa.concluida span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.item-tarefa .acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.item-tarefa button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botao-concluir {
+    color: #22c55e;
+}
+
+.botao-excluir {
+    color: #ef4444;
+}
+
+.rodape-aplicacao {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+body.modo-escuro .rodape-aplicacao {
+    color: #cbd5e1;
+    border-top-color: #451a03;
+}
+
+.foto-perfil {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0284c7;
+}
+
+body.modo-escuro .foto-perfil {
+    border-color: #dc2626;
+}
+
+/* botao */
+
+.botao-flutuante-ajuda {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #0284c7;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 1000;
+}
+
+.botao-flutuante-ajuda:hover {
+    transform: scale(1.1);
+    background-color: #0369a1;
+}
+
+body.modo-escuro .botao-flutuante-ajuda {
+    background-color: #dc2626;
+}
+
+body.modo-escuro .botao-flutuante-ajuda:hover {
+    background-color: #b91c1c;
+}
+
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-container.visivel {
+    display: flex;
+}
+
+.modal-conteudo {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.modo-escuro .modal-conteudo {
+    background-color: #2a1212;
+    color: #f8fafc;
+}
+
+.botao-fechar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+body.modo-escuro .botao-fechar {
+    color: #fca5a5;
+}
+
+.aba-botoes {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+body.modo-escuro .aba-botoes {
+    border-bottom-color: #7f1d1d;
+}
+
+.botao-aba {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #64748b;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.botao-aba.ativa {
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+body.modo-escuro .botao-aba {
+    color: #cbd5e1;
+}
+
+body.modo-escuro .botao-aba.ativa {
+    background-color: #3f1515;
+    color: #fca5a5;
+}
+
+.conteudo-aba {
+    display: none;
+}
+
+.conteudo-aba.ativa {
+    display: block;
+}
+
+.conteudo-aba h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #0369a1;
+}
+
+body.modo-escuro .conteudo-aba h2 {
+    color: #fca5a5;
+}
+
+.conteudo-aba p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.campo-grupo label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.campo-grupo input {
+    padding: 10px;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    outline: none;
+}
+
+body.modo-escuro .campo-grupo input {
+    background: #3f1515;
+    border-color: #7f1d1d;
+    color: #fff;
+}
+
+.mensagem-oculta {
+    display: none;
+    color: #22c55e;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Complemento para a Aba de Perfil */
+.info-perfil {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.info-perfil p {
+    margin-bottom: 8px;
+}
